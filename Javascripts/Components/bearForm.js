@@ -1,5 +1,6 @@
 import utils from "../helpers/utils.js";
 import bearData from "../helpers/data/bearData.js";
+import river from "../Components/river.js";
 
 
 
@@ -25,9 +26,12 @@ const bearBuilder = () => {
 
 const addBear = (e) => {
   e.preventDefault();
+  const bears = bearData.getBears
+  const bearId = `bears${bears.length + 1}`
   const bearName = document .getElementById('name').value
   const bearImage = document.getElementById('imageUrl').value
-  bearData.setSelectedBears({name:bearName, imageUrl:bearImage});
+  bearData.setSelectedBears({name:bearName, imageUrl:bearImage, id:bearId});
+  river.riverBuilder();
 
 };
 
@@ -35,4 +39,4 @@ const eventListener = () => {
   document.getElementById('submit-btn').addEventListener('click',addBear);
 }
 
-export default { bearBuilder, eventListener}
+export default { bearBuilder, eventListener }
